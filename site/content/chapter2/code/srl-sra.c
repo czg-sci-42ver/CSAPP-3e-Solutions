@@ -20,6 +20,7 @@ int sra(int x, int k) {
   int mask = (int) -1 << (w - k);
   //let mask remain unchanged when the first bit of x is 1, otherwise 0.
   int m = 1 << (w - 1);
+  printf("%o %o %o %d\n",! (x & m) - 1,m,!(x&m),w);
   mask &= ! (x & m) - 1;
   return xsrl | mask;
 }

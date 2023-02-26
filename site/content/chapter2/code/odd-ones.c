@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <assert.h>
 
+// // https://stackoverflow.com/questions/21617970/how-can-i-check-if-a-value-has-even-parity-of-bits-or-odd/21618038#21618038
 int odd_ones(unsigned x) {
   x ^= x >> 16;
   x ^= x >> 8;
