@@ -1,6 +1,7 @@
 /*
  * rotate-left.c
  */
+#include <stdint.h>
 #include <stdio.h>
 #include <assert.h>
 
@@ -12,6 +13,9 @@
 unsigned rotate_left(unsigned x, int n) {
   int w = sizeof(unsigned) << 3;
   /* pay attention when n == 0 */
+  // int32_t test = x<<31<<31;
+  // int16_t test2 = x<<15<<15;
+  // printf("%d %d",test,test2);
   return x << n | x >> (w - n - 1) >> 1;
 }
 

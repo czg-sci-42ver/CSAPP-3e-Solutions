@@ -26,10 +26,7 @@ int int_size_is_32() {
 
 /*wrong*/
 // int int_size_is_32_for_16bit() {
-//   int16_t set_msb =
-//       1
-//       << 15 << 15
-//       << 1; /* wrong , see
+  // int set_msb =1 << 31 << 31; /* wrong , see
 //                https://github.com/DesmondoRay/CSAPP-3e/blob/master/chapter_2/p67.c*/
 //   printf("%x %x %s\n", (int16_t)set_msb, set_msb, __func__);
 //   // printf("%x %x",1<<15<<15,1<<(15<<15));
