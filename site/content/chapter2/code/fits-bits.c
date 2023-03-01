@@ -9,6 +9,7 @@ int fits_bits(int x, int n) {
    * 1 <= n <= w
    *
    * assume w = 8, n = 3
+   * 基于 2's complement 在不同进制下表示 arithmetic shift
    * if x > 0
    *   0b00000010 is ok, 0b00001010 is not, and 0b00000110 is not yet (thanks itardc@163.com)
    * if x < 0
