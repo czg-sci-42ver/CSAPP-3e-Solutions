@@ -54,16 +54,19 @@ esac
 cd ~/CSAPP-3e-Solutions/site/content/"chapter$1"/code
 test_file=$2
 if [ -f $test_file.c ]; then
-   gcc -g $test_file.c -o $test_file
-   ./$test_file
+   # https://stackoverflow.com/questions/1024525/how-to-check-if-gcc-has-failed-returned-a-warning-or-succeeded-in-bash
+   # https://stackoverflow.com/questions/36313216/why-is-testing-to-see-if-a-command-succeeded-or-not-an-anti-pattern
+   if gcc -g $test_file.c -o $test_file; then
+      ./$test_file
+      case $3 in
+      -g | g | --g)
+         gdb $test_file
+         ;;
+      esac
+   fi
 else
    echo "current dir is $(pwd), no file $2"
    exit 0
 fi
-case $3 in
--g | g | --g)
-   gdb $test_file
-   ;;
-esac
 
 exit 0
