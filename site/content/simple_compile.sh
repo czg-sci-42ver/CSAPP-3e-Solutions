@@ -26,9 +26,6 @@
 # }
 # test
 
-# for i in $*; do
-#    echo $i
-# done
 # echo $*
 # echo $@
 
@@ -49,6 +46,24 @@ helpFunction() {
 # if [ $3 == 'g'|| $3 == '-g' ] ; then
 #    gdb $test_file
 # fi
+
+for i in $@; do
+   case $i in
+   -h | --help)
+      helpFunction
+      exit 0
+      ;;
+   -c | c | --c)
+      CREF=1
+      ;;
+   -r | r | --r)
+      REPL=1
+      ;;
+   )
+       
+   esac
+done
+
 case $1 in
 -h | --help)
    helpFunction
@@ -77,12 +92,12 @@ case $1 in
       if gcc $CFLAGS -g -ggdb3 $test_file.c -o $test_file; then
          case $3 in
          -g | g | --g)
-            if [[ -n $4 ]] ;then
-            gdb $test_file -ex "br $4" -ex "r"
-            exit 0
+            if [[ -n $4 ]]; then
+               gdb $test_file -ex "br $4" -ex "r"
+               exit 0
             else
                #echo "please give gdb breakpoint"
-               gdb $test_file 
+               gdb $test_file
                exit 0
             fi
             ;;
@@ -102,12 +117,12 @@ if [ -f $test_file.c ]; then
       ./$test_file
       case $3 in
       -g | g | --g)
-         if [[ -n $4 ]] ;then
+         if [[ -n $4 ]]; then
             gdb $test_file -ex "br $4" -ex "r"
             exit 0
          else
             #echo "please give gdb breakpoint"
-            gdb $test_file 
+            gdb $test_file
             exit 0
          fi
          ;;
