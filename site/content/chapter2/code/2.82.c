@@ -83,6 +83,7 @@ int main(int argc, char* argv[]) {
 
   assert(!A(INT_MIN, 0));
   assert(B(x, y));
+  assert(B(INT_MAX,1));
   assert(C(x, y));
   assert(D(x, y));
   assert(E(x, y));

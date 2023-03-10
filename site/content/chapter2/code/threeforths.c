@@ -1,9 +1,9 @@
 /*
  * threeforths.c
  */
-#include <stdio.h>
 #include <assert.h>
 #include <limits.h>
+#include <stdio.h>
 
 /*
  * calculate 3/4x, no overflow, round to zero
@@ -18,7 +18,8 @@
  *   x = f + l
  *   threeforths(x) = f/4*3 + l*3/4
  *
- * f doesn't care about round at all, we just care about rounding from l*3/4
+ * f doesn't care about round at all(no error when rounding), we just care about
+ * rounding from l*3/4
  *
  *   lm3 = (l << 1) + l
  *
@@ -47,6 +48,18 @@ int threeforths(int x) {
   return fd4m3 + lm3d4;
 }
 
+int threeforths_2(int x) {
+  int is_neg = x & INT_MIN;
+  int l = x & 0x3;
+  int bias = 1;
+  (is_neg || !l) && (bias = 0);
+  printf("%d\n", x - (x >> 2) - bias);
+  // !l &&(bias=0);
+  // int test = -1 << j - (-1) << (k + j);
+
+  return x - (x >> 2) - bias;
+}
+
 int main(int argc, char* argv[]) {
   assert(threeforths(8) == 6);
   assert(threeforths(9) == 6);
@@ -59,7 +72,19 @@ int main(int argc, char* argv[]) {
   assert(threeforths(-10) == -7);
   assert(threeforths(-11) == -8);
   assert(threeforths(-12) == -9);
+  // assert(threeforths(INT_MAX) == INT_MAX/4*3);
+
+  assert(threeforths_2(8) == 6);
+  assert(threeforths_2(9) == 6);
+  assert(threeforths_2(10) == 7);
+  assert(threeforths_2(11) == 8);
+  assert(threeforths_2(12) == 9);
+
+  assert(threeforths_2(-8) == -6);
+  assert(threeforths_2(-9) == -6);
+  assert(threeforths_2(-10) == -7);
+  assert(threeforths_2(-11) == -8);
+  assert(threeforths_2(-12) == -9);
+  // assert(threeforths_2(INT_MAX) == INT_MAX/4*3);
   return 0;
 }
-
-

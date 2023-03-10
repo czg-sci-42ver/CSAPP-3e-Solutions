@@ -6,7 +6,9 @@
 #include <inttypes.h>
 
 int signed_high_prod(int x, int y) {
+  int64_t test_mul = x * y;
   int64_t mul = (int64_t) x * y;
+  if (test_mul!=mul) printf("error\n%ld\t%ld",test_mul,mul);
   return mul >> 32;
 }
 

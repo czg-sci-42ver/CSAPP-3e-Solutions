@@ -33,6 +33,10 @@ int main(int argc, char* argv[]) {
   p = another_calloc(SIZE_MAX, 2);
   assert(p == NULL);
   free(p);
+  // https://stackoverflow.com/questions/43183690/how-to-avoid-overflow-in-realloc
+  // p = calloc(SIZE_MAX, 2);
+  // assert(p != NULL);
+  // free(p);
   return 0;
 }
 

@@ -11,6 +11,7 @@
  */
 int divide_power2(int x, int k) {
   int is_neg = x & INT_MIN;
+  // carry bit to round -> zero  
   (is_neg && (x = x + (1 << k) - 1));
   return x >> k;
 }

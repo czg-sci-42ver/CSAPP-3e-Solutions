@@ -1,3 +1,10 @@
+# https://stackoverflow.com/a/53416684/21294350
+*
+!/**/
+!*.*
+# https://www.golinuxcloud.com/gitignore-examples/
+**.[0-9]?
+
 _book
 node_modules
 a.out
