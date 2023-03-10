@@ -16,7 +16,7 @@ has_arg() {
 
 helpFunction() {
   echo ""
-  echo "Usage: $0 chapter file ((-g) num)"
+  echo "Usage: $0 -p chapter file (-g| -gg num) -l link_lib "
   echo -e "\tThe argument order can't be changed"
   echo -e "\tDescription of what chapter is"
   echo -e "\tDescription of what file name is"
@@ -114,7 +114,7 @@ for file in "${files_suf[@]}"; do
   fi
 done
 
-if [[ -n "${files_suf[@]}" ]]; then
+if [[ -n "${files_suf[@]}" ]] && [[ -n "${files[@]}" ]]; then
   if [[ $FILE_EXIST -ne 0 ]]; then
     # echo "gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}"
     if gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}; then
@@ -137,7 +137,7 @@ if [[ -n "${files_suf[@]}" ]]; then
     exit 1
   fi
 else
-  echo "please give files"
+  echo "please give files and output files"
   exit 1
 fi
 # echo "${@:1:1}"
