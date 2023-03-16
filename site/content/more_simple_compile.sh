@@ -1,4 +1,5 @@
 #!/bin/bash
+source ~/.bashrc
 set -o history -o histexpand
 
 index=1
@@ -121,10 +122,10 @@ if [[ -n "${files_suf[@]}" ]] && [[ -n "${files[@]}" ]]; then
       ./$files
       if [[ $DEBUG -ne 0 ]]; then
         if [[ $BRL -ne -1 ]]; then
-          gdb $files -ex "br $BRL" -ex "r"
+          gdb-tmux $files -ex \'br $BRL\'
           exit 0
         else
-          gdb $files
+          gdb-tmux $files
           exit 0
         fi
       fi
