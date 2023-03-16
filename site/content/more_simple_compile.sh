@@ -119,8 +119,8 @@ if [[ -n "${files_suf[@]}" ]] && [[ -n "${files[@]}" ]]; then
     # echo "gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}"
     if gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}; then
       ./$files
-      if [[ DEBUG -ne 0 ]]; then
-        if [[ BRL -ne -1 ]]; then
+      if [[ $DEBUG -ne 0 ]]; then
+        if [[ $BRL -ne -1 ]]; then
           gdb $files -ex "br $BRL" -ex "r"
           exit 0
         else
