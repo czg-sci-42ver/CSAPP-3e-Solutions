@@ -71,6 +71,11 @@ while [[ $index -le $# ]]; do
     cd ~/CSAPP-3e-Solutions/site/content/"chapter${!index}"/code
     has_arg ${!index}
     ;;
+  -w)
+    ((index++))
+    has_arg ${!index}
+    debug_win="${!index}"
+    ;;
   -*)
     opts+=("${!index}")
     ;;
@@ -122,10 +127,10 @@ if [[ -n "${files_suf[@]}" ]] && [[ -n "${files[@]}" ]]; then
       ./$files
       if [[ $DEBUG -ne 0 ]]; then
         if [[ $BRL -ne -1 ]]; then
-          gdb-tmux $files -ex \'br $BRL\'
+          gdb-tmux $debug_win $files -ex \'br $BRL\'
           exit 0
         else
-          gdb-tmux $files
+          gdb-tmux $debug_win $files
           exit 0
         fi
       fi
