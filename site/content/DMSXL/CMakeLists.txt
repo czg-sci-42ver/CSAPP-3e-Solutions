@@ -10,4 +10,5 @@ project(MyProject
 )
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_executable(tmp tmp.cpp)
+add_compile_options(-g3 -Wall)
+add_executable(26 26.cpp)

@@ -123,14 +123,19 @@ done
 if [[ -n "${files_suf[@]}" ]] && [[ -n "${files[@]}" ]]; then
   if [[ $FILE_EXIST -ne 0 ]]; then
     # echo "gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}"
-    if gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}; then
+    # if gcc $CFLAGS -g -ggdb3 ${files_suf[@]} -o ${files[@]}; then
+    if [[ -f ./$files ]];then
+      rm ./$files
+      echo "rm"
+    fi
+    if gcc $CFLAGS -g3 -O0 -ggdb3 ${files_suf[@]} -o ${files[@]}; then
       ./$files
       if [[ $DEBUG -ne 0 ]]; then
         if [[ $BRL -ne -1 ]]; then
-          gdb-tmux $debug_win $files -ex \'br $BRL\'
+          gdb-tmux $debug_win $files -ex \'br $BRL\' -iex \'shell touch ~/.gdb-color-pipe\'
           exit 0
         else
-          gdb-tmux $debug_win $files
+          gdb-tmux $debug_win $files -iex \'shell touch ~/.gdb-color-pipe\'
           exit 0
         fi
       fi
