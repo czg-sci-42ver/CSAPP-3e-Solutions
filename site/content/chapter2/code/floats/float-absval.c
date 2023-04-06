@@ -15,5 +15,6 @@ float_bits float_absval(float_bits f) {
     return f;
   }
 
-  return 0 << 31 | exp << 23 | frac;
+  // return 0 << 31 | exp << 23 | frac;
+  return f & (~(unsigned int)0)>>1;
 }

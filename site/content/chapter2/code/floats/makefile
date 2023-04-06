@@ -2,11 +2,12 @@
 # makefile
 #
 CFLAGS = -m64 -std=c99
-SRCS = $(wildcard *.c)
+# SRCS = $(wildcard *.c)
+TEST_SRC = ./float-half-test.c
 LIBFILE = ../lib/random.c
 
 all:
-	gcc $(CFLAGS) $(SRCS) $(LIBFILE) -o main
+	gcc $(CFLAGS) $(TEST_SRC) $(LIBFILE) -g3 -o float-half-test
 
 test:
 	./main

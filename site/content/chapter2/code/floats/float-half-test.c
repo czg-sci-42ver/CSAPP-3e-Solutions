@@ -2,6 +2,7 @@
  * float-half.c
  */
 #include <stdio.h>
+#include "../lib/random.h"
 #include <assert.h>
 #include "float-half.h"
 
@@ -57,4 +58,14 @@ float_bits float_half(float_bits f) {
 
   return sig << 31 | exp << 23 | frac;
   // return sig << 31 | exp << 23 | frac_cp;
+}
+
+float u2f(unsigned u) { return *(float*)&u; }
+
+int main(){
+  init_seed();
+  unsigned r = random_int();
+  float f = u2f(r);
+  float fdiv2 = f * 0.5;
+  assert(u2f(float_half(r)) == fdiv2);
 }
