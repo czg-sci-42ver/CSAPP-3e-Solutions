@@ -10,6 +10,7 @@ test:
   # so a_struct is aligned by 8, size is 40
   # check last instrction, %rdx here saves value ap->idx!!!
   # so in a_struct, idx is first element
+  /* here not change %rax*/
   mov 0x8(%rax), %rdx
 
   movslq %ecx, %rcx             # n = bp->first + bp->last, convert to long

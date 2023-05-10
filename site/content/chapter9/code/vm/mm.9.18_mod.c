@@ -174,9 +174,16 @@ static void *coalesce(void *bp)
 
   else if (!prev_alloc && next_alloc) {      /* Case 3 */
     size += GET_SIZE(HDRP(PREV_BLKP(bp)));
-    /*in free block, no need to check 'prev_alloc' of temporally former free block because always coalescing after freeing one block, so 'prev_alloc' of temporally former free block must be 1 */
-    PUT(FTRP(bp), PACK(size, 0, 1));
-    PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0, 1));
+    /*in free block ‘prev_alloc’ is no use.*/
+    if (GET_PREV_ALLOC(HDRP(PREV_BLKP(bp)))) {
+      PUT(FTRP(bp), PACK(size, 0, 1));
+      PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0, 1));
+    }
+    else {
+      PUT(FTRP(bp), PACK(size, 0, 0));
+      PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0, 0));
+    }
+    
     bp = PREV_BLKP(bp);
   }
 
@@ -285,7 +292,7 @@ static void place(void *bp, size_t asize)
   }
   else {
     PUT(HDRP(bp), PACK(csize, 1, 1));
-    PUT(HDRP(NEXT_BLKP(bp)), PACK(csize, 1, 1));
+    PUT(HDRP(NEXT_BLKP(bp)), PACK(csize, 0, 1));
   }
 }
 /* $end mmplace */

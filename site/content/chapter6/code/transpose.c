@@ -11,8 +11,9 @@
 // a large prime number
 #define MATRIX_N 9973
 #define MEM_SIZE (sizeof(int) * MATRIX_N * MATRIX_N)
-#define LOOP 1000
-#define BLOCK 16
+// #define LOOP 1000
+#define LOOP 10
+#define BLOCK 6
 
 void randomize(void *mem, size_t size) {
   int rnd = open("/dev/urandom", O_RDONLY);
@@ -92,10 +93,10 @@ void prof_effect(void) {
 }
 
 int main(int argc, char *argv[]) {
-  test();
+  // test();
 
   /* prof(); */
-  /* prof_effect(); */
+  prof_effect(); 
 
   return 0;
 }

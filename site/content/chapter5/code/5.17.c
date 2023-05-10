@@ -26,6 +26,7 @@ void* effective_memset(void *s, unsigned long cs, size_t n) {
   size_t K = sizeof(unsigned long);
   size_t cnt = 0;
   unsigned char *schar = s;
+  printf("%zu\n",(size_t)schar);
   while (cnt < n) {
     if ((size_t)schar % K == 0) {
       break;
@@ -61,6 +62,7 @@ int main(int argc, char* argv[]) {
 
   void* basic_space = malloc(space);
   void* effective_space = malloc(space);
+  printf("%zu\n",space);
 
   int basic_fill = 0xFF;
   unsigned long effective_fill = ~0;

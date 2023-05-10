@@ -24,17 +24,17 @@ main:
 ysBubbleP:
   jmp L2
 L4:
-  mrmovq 8(%rax), %r9
-  mrmovq (%rax), %r10
+  mrmovq 8(%rax), %r9 ;let a=data[i+1]=ao
+  mrmovq (%rax), %r10 ;let b=data[i]=bo
 ############################################
 # begin differences
 ############################################
-  rrmovq %r9, %r8
+  rrmovq %r9, %r8 ;
   rrmovq %r10, %r11
-  xorq %r9, %r10
-  subq %r11, %r8
-  cmovge %r11, %r9
-  xorq %r10, %r9
+  xorq %r9, %r10 ;b=(bo^ao)
+  subq %r11, %r8 
+  cmovge %r11, %r9 ;data[i+1]>data[i] -> data[i+1]=data[i], i.e. a=bo
+  xorq %r10, %r9 ;if no cmov, a=(bo^ao)^ao=bo; otherwise,a=(bo^ao)^bo=ao
   xorq %r9, %r10
   rmmovq %r9, 8(%rax)
   rmmovq %r10, (%rax)
