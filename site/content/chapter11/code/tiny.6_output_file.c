@@ -13,16 +13,8 @@ void serve_dynamic(int fd, char *filename, char *cgiargs);
 void clienterror(int fd, char *cause, char *errnum,
     char *shortmsg, char *longmsg);
 
-// improved rio written
-void Im_rio_writen(int fd, void *usrbuf, size_t n) {
-  if (rio_writen(fd, usrbuf, n) != n) {
-    if (errno == EPIPE)
-      fprintf(stderr, "EPIPE error\n");
-
-    fprintf(stderr, "%s \n", strerror(errno));
-    unix_error("client side has ended connection\n");
-  }
-}
+void echo(int connfd);
+int output_fd;
 
 int main(int argc, char **argv)
 {
@@ -37,18 +29,34 @@ int main(int argc, char **argv)
     exit(1);
   }
 
-  if (Signal(SIGPIPE, SIG_IGN) == SIG_ERR)
-    unix_error("mask signal pipe error");
-
   listenfd = Open_listenfd(argv[1]);
+  /*
+  from `man 2 open`, 'A call to creat() is equivalent to calling open() with flags equal to O_CREAT|O_WRONLY|O_TRUNC.'
+  */
+  output_fd = Open("./browser.txt", O_CREAT|O_WRONLY|O_TRUNC, S_IWUSR|S_IRGRP|S_IRUSR);
+  // chmod("./browser.txt", S_IWUSR|S_IRGRP|S_IRUSR);
   while (1) {
     clientlen = sizeof(clientaddr);
     connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen); //line:netp:tiny:accept
     Getnameinfo((SA *) &clientaddr, clientlen, hostname, MAXLINE,
         port, MAXLINE, 0);
     printf("Accepted connection from (%s, %s)\n", hostname, port);
-    doit(connfd);                                             //line:netp:tiny:doit
+    echo(connfd);
     Close(connfd);                                            //line:netp:tiny:close
+  }
+}
+
+void echo(int connfd) {
+  size_t n;
+  char buf[MAXLINE];
+  rio_t rio;
+
+  Rio_readinitb(&rio, connfd);
+  while ((n = Rio_readlineb(&rio, buf, MAXLINE)) != 0) {
+    Rio_writen(output_fd, buf, n);
+    if (strcmp(buf, "\r\n") == 0)
+      break;
+    Rio_writen(connfd, buf, n);
   }
 }
 
@@ -162,7 +170,7 @@ void serve_static(int fd, char *filename, int filesize)
   sprintf(buf, "%sConnection: close\r\n", buf);
   sprintf(buf, "%sContent-length: %d\r\n", buf, filesize);
   sprintf(buf, "%sContent-type: %s\r\n\r\n", buf, filetype);
-  Im_rio_writen(fd, buf, strlen(buf));       //line:netp:servestatic:endserve
+  Rio_writen(fd, buf, strlen(buf));       //line:netp:servestatic:endserve
   printf("Response headers:\n");
   printf("%s", buf);
 
@@ -170,7 +178,7 @@ void serve_static(int fd, char *filename, int filesize)
   srcfd = Open(filename, O_RDONLY, 0);    //line:netp:servestatic:open
   srcp = Mmap(0, filesize, PROT_READ, MAP_PRIVATE, srcfd, 0);//line:netp:servestatic:mmap
   Close(srcfd);                           //line:netp:servestatic:close
-  Im_rio_writen(fd, srcp, filesize);         //line:netp:servestatic:write
+  Rio_writen(fd, srcp, filesize);         //line:netp:servestatic:write
   Munmap(srcp, filesize);                 //line:netp:servestatic:munmap
 }
 
@@ -200,13 +208,11 @@ void serve_dynamic(int fd, char *filename, char *cgiargs)
 
   /* Return first part of HTTP response */
   sprintf(buf, "HTTP/1.0 200 OK\r\n");
-  Im_rio_writen(fd, buf, strlen(buf));
+  Rio_writen(fd, buf, strlen(buf));
   sprintf(buf, "Server: Tiny Web Server\r\n");
-  Im_rio_writen(fd, buf, strlen(buf));
+  Rio_writen(fd, buf, strlen(buf));
 
   if (Fork() == 0) { /* Child */ //line:netp:servedynamic:fork
-    if (Signal(SIGPIPE, SIG_DFL) == SIG_ERR)
-      unix_error("unmask signal pipe error");
     /* Real server would set all CGI vars here */
     setenv("QUERY_STRING", cgiargs, 1); //line:netp:servedynamic:setenv
     Dup2(fd, STDOUT_FILENO);         /* Redirect stdout to client */ //line:netp:servedynamic:dup2
@@ -232,10 +238,10 @@ void clienterror(int fd, char *cause, char *errnum,
 
   /* Print the HTTP response */
   sprintf(buf, "HTTP/1.0 %s %s\r\n", errnum, shortmsg);
-  Im_rio_writen(fd, buf, strlen(buf));
+  Rio_writen(fd, buf, strlen(buf));
   sprintf(buf, "Content-type: text/html\r\n");
-  Im_rio_writen(fd, buf, strlen(buf));
+  Rio_writen(fd, buf, strlen(buf));
   sprintf(buf, "Content-length: %d\r\n\r\n", (int)strlen(body));
-  Im_rio_writen(fd, buf, strlen(buf));
-  Im_rio_writen(fd, body, strlen(body));
+  Rio_writen(fd, buf, strlen(buf));
+  Rio_writen(fd, body, strlen(body));
 }

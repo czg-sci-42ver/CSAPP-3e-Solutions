@@ -1,5 +1,5 @@
---- tiny.origin.c	2021-02-25 07:26:33.302592754 +0000
-+++ tiny.13.c	2021-02-25 07:26:33.302592754 +0000
+--- tiny.origin.c	2023-02-26 11:04:36.447612275 +0800
++++ tiny.13.c	2023-05-14 14:31:35.084976441 +0800
 @@ -13,6 +13,17 @@
  void clienterror(int fd, char *cause, char *errnum,
      char *shortmsg, char *longmsg);
@@ -8,10 +8,10 @@
 +void Im_rio_writen(int fd, void *usrbuf, size_t n) {
 +  if (rio_writen(fd, usrbuf, n) != n) {
 +    if (errno == EPIPE)
-+      fprintf(stderr, "EPIPE error");
++      fprintf(stderr, "EPIPE error\n");
 +
-+    fprintf(stderr, "%s ", strerror(errno));
-+    unix_error("client side has ended connection");
++    fprintf(stderr, "%s \n", strerror(errno));
++    unix_error("client side has ended connection\n");
 +  }
 +}
 +

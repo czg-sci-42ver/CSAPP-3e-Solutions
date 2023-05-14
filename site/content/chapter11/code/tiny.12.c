@@ -3,6 +3,7 @@
  *     GET method to serve static and dynamic content.
  */
 #include "csapp.h"
+#include <stdio.h>
 
 void doit(int fd);
 int read_requesthdrs(rio_t *rp, char *method);
@@ -55,7 +56,8 @@ void doit(int fd)
     return;
   printf("%s", buf);
   sscanf(buf, "%s %s %s", method, uri, version);       //line:netp:doit:parserequest
-  if (!(strcasecmp(method, "GET") == 0 || strcasecmp(method, "POST") == 0)) {
+  int not_post = strcasecmp(method, "POST");
+  if (!(strcasecmp(method, "GET") == 0 || not_post == 0)) {
     clienterror(fd, method, "501", "Not Implemented",
         "Tiny does not implement this method");
     return;
@@ -63,6 +65,11 @@ void doit(int fd)
   int param_len = read_requesthdrs(&rio, method);
 
   Rio_readnb(&rio, buf, param_len);
+  // if (!not_post) {
+  //   printf("test post");
+  //   Rio_readlineb(&rio, buf, MAXLINE);
+  //   printf("buf:%s,len:%d\n",buf,param_len);
+  // }
 
   /* Parse URI from GET request */
   is_static = parse_uri(uri, filename, cgiargs);       //line:netp:doit:staticcheck
@@ -200,6 +207,7 @@ void serve_dynamic(int fd, char *filename, char *cgiargs)
   if (Fork() == 0) { /* Child */ //line:netp:servedynamic:fork
     /* Real server would set all CGI vars here */
     setenv("QUERY_STRING", cgiargs, 1); //line:netp:servedynamic:setenv
+    printf("cgiargs:%s",cgiargs);
     Dup2(fd, STDOUT_FILENO);         /* Redirect stdout to client */ //line:netp:servedynamic:dup2
     Execve(filename, emptylist, environ); /* Run CGI program */ //line:netp:servedynamic:execve
   }

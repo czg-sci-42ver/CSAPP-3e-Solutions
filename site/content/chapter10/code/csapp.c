@@ -318,7 +318,7 @@ void Sio_error(char s[])
  * Wrappers for Unix I/O routines
  ********************************/
 
-int Open(const char *pathname, int flags, mode_tt mode) 
+int Open(const char *pathname, int flags, mode_t mode) 
 {
     int rc;
 
