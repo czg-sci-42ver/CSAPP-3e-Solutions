@@ -1,5 +1,5 @@
---- 12.tiny.c	2021-02-25 07:26:33.305926066 +0000
-+++ 12.35.c	2021-02-25 07:26:33.302592754 +0000
+--- 12.tiny.c	2023-05-20 18:22:16.321065849 +0800
++++ 12.35.c	2023-05-20 18:22:16.331066136 +0800
 @@ -1,6 +1,8 @@
  /*
 - * tiny.c - A simple, iterative HTTP/1.0 Web server that uses the
@@ -11,16 +11,16 @@
  #include "csapp.h"
  
 @@ -35,8 +37,14 @@
-     Getnameinfo((SA *) &clientaddr, clientlen, hostname, MAXLINE,
-         port, MAXLINE, 0);
+     Getnameinfo((SA *)&clientaddr, clientlen, hostname, MAXLINE, port, MAXLINE,
+                 0);
      printf("Accepted connection from (%s, %s)\n", hostname, port);
--    doit(connfd);                                             //line:netp:tiny:doit
--    Close(connfd);                                            //line:netp:tiny:close
+-    doit(connfd);  // line:netp:tiny:doit
+-    Close(connfd); // line:netp:tiny:close
 +
 +    if (Fork() == 0) {
 +      Close(listenfd);
-+      doit(connfd);                                             //line:netp:tiny:doit
-+      Close(connfd);                                            //line:netp:tiny:close
++      doit(connfd);  // line:netp:tiny:doit
++      Close(connfd); // line:netp:tiny:close
 +      exit(0);
 +    }
 +    Close(connfd);

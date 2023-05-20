@@ -3,8 +3,7 @@
  */
 #include "csapp.h"
 
-int main(int argc, char **argv)
-{
+int main(int argc, char **argv) {
   int clientfd;
   char *host, *port;
   char *buf = "something to send\n";

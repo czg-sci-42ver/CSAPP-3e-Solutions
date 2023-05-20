@@ -2,12 +2,17 @@
  * main.c
  */
 #include <stdio.h>
-#include "../csapp.h"
-#include "tiny.h"
-#include "sbuf.h"
+#include <stdlib.h>
 
-#define SBUFSIZE  4
-#define INIT_THREAD_N  1
+#include "../csapp.h"
+#include "sbuf.h"
+#include "tiny.h"
+
+/*
+need small SBUFSIZE to allow more threads
+*/
+#define SBUFSIZE 4
+#define INIT_THREAD_N 1
 #define THREAD_LIMIT 4096
 
 static int nthreads;
@@ -20,6 +25,7 @@ typedef struct {
 } ithread;
 
 static ithread threads[THREAD_LIMIT];
+static int cur_max_thread, old_max;
 
 // init work
 void init(void);
@@ -55,13 +61,18 @@ int main(int argc, char **argv) {
 
   while (1) {
     clientlen = sizeof(struct sockaddr_storage);
-    connfd = Accept(listenfd, (SA *) &clientaddr, &clientlen);
+    connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);
     sbuf_insert(&sbuf, connfd); /* Insert connfd in buffer */
+    if (old_max != cur_max_thread) {
+      old_max = cur_max_thread;
+      printf("max: %d", old_max);
+    }
   }
 }
 
 void init(void) {
   nthreads = INIT_THREAD_N;
+  cur_max_thread = nthreads;
   sbuf_init(&sbuf, SBUFSIZE);
 
   // create initail server threads
@@ -69,7 +80,7 @@ void init(void) {
 }
 
 void *serve_thread(void *vargp) {
-  int idx = *(int*)vargp;
+  int idx = *(int *)vargp;
   Free(vargp);
 
   while (1) {
@@ -93,7 +104,7 @@ void create_threads(int start, int end) {
     // init mutex for every new thread
     Sem_init(&(threads[i].mutex), 0, 1);
     // create thread
-    int *arg = (int*)Malloc(sizeof(int));
+    int *arg = (int *)Malloc(sizeof(int));
     *arg = i;
     // pass thread index in array into thread inside
     Pthread_create(&(threads[i].tid), NULL, serve_thread, arg);
@@ -115,6 +126,13 @@ void *adjust_threads(void *vargp) {
       int dn = 2 * nthreads;
       create_threads(nthreads, dn);
       nthreads = dn;
+      if (cur_max_thread < nthreads) {
+        cur_max_thread = nthreads;
+      }
+      if (cur_max_thread >= 32) {
+        printf("too many threads");
+        exit(0);
+      }
       continue;
     }
 

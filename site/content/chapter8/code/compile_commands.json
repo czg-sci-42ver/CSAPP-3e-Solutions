@@ -1,0 +1,562 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.11",
+      "8.11.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.11.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.11"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.11",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.11"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.12",
+      "8.12.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.12.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.12"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.12",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.12"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.13",
+      "8.13.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.13.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.13"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.13",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.13"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.14",
+      "8.14.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.14.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.14"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.14",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.14"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.15",
+      "8.15.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.15.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.15"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.15",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.15"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.16",
+      "8.16.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.16.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.16"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.16",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.16"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.18",
+      "8.18.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.18.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.18"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.18",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.18"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.19",
+      "8.19.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.19.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.19"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.19",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.19"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.20",
+      "8.20.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.20.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.20"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.20",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.20"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.21",
+      "8.21.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.21.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.21"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.21",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.21"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.23",
+      "8.23.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.23.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.23"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.23",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.23"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.24",
+      "8.24.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.24.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.24"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.24",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.24"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.25",
+      "8.25.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.25.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.25"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.25",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.25"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.25_comment_1_try",
+      "8.25_comment_1_try.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.25_comment_1_try.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.25_comment_1_try"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "8.25_comment_1_try",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/8.25_comment_1_try"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "shell",
+      "main.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/main.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/shell"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "shell",
+      "shell.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/shell.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/shell"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "shell",
+      "job.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/job.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/shell"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "shell",
+      "../csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/shell"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "loop",
+      "loop.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/loop.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/loop"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "loop",
+      "../csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/loop"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "sleep",
+      "sleep.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/sleep.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/sleep"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-pthread",
+      "-m64",
+      "-o",
+      "sleep",
+      "../csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/shell/sleep"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "mysystem",
+      "mysystem.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/mysystem.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/mysystem"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "mysystem",
+      "csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/mysystem"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "exit-code",
+      "exit-code.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/exit-code.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/exit-code"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "wait-sig",
+      "wait-sig.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/wait-sig.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter8/code/wait-sig"
+  }
+]

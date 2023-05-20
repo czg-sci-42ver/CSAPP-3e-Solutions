@@ -2,13 +2,14 @@
  * 12.16.c
  */
 #include <stdio.h>
+
 #include "csapp.h"
 
 void *thread(void *vargp);
 
 #define DEFAULT 4
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   int N;
   if (argc > 2)
     unix_error("too many param");
@@ -29,5 +30,3 @@ void *thread(void *vargp) {
   printf("Hello, world\n");
   return NULL;
 }
-
-

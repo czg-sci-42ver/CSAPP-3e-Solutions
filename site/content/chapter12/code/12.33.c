@@ -2,6 +2,7 @@
  * 12.33.c
  */
 #include <stdio.h>
+
 #include "csapp.h"
 
 struct pack {
@@ -32,23 +33,26 @@ char *tfgets(char *s, int size, FILE *stream) {
   p.s = s;
   p.size = size;
   p.stream = stream;
-  Pthread_create(&tid_read, NULL, thread_read, (void*)&p);
+  Pthread_create(&tid_read, NULL, thread_read, (void *)&p);
 
   Pthread_create(&tid_sleep, NULL, thread_sleep, NULL);
 
   // wait 2 thread race result
-  while(timeout == -1) {}
+  while (timeout == -1) {
+  }
 
   if (timeout == 1) {
+    // Pthread_cancel(tid_sleep);
     Pthread_cancel(tid_read);
     return NULL;
   } else {
+    // Pthread_cancel(tid_read);
     Pthread_cancel(tid_sleep);
     return ptr;
   }
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   char buf[MAXLINE];
 
   if (tfgets(buf, MAXLINE, stdin) == NULL)
@@ -58,5 +62,3 @@ int main(int argc, char* argv[]) {
 
   return 0;
 }
-
-

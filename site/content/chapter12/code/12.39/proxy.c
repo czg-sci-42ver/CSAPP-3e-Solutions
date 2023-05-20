@@ -5,6 +5,7 @@
  * block url base on entry from file block.list
  */
 #include <stdio.h>
+
 #include "../csapp.h"
 
 // block.list limit entry num
@@ -48,7 +49,7 @@ int main(int argc, char **argv) {
   while (1) {
     // wait for connection as a server
     clientlen = sizeof(struct sockaddr_storage);
-    connfd = Accept(listenfd, (SA *) &clientaddr, &clientlen);
+    connfd = Accept(listenfd, (SA *)&clientaddr, &clientlen);
     Rio_readinitb(&server_rio, connfd);
 
     /*
@@ -104,7 +105,7 @@ int main(int argc, char **argv) {
       sn = Rio_readlineb(&server_rio, s_buf, MAXLINE);
       printf("%s", s_buf);
       Rio_writen(clientfd, s_buf, sn);
-    } while(strcmp(s_buf, "\r\n"));
+    } while (strcmp(s_buf, "\r\n"));
 
     /*
      *  server  -->  proxy  -->  browser
@@ -154,7 +155,7 @@ int separate_uri(char *uri, char *host, char *port, char *path) {
   while (*end != ':' && *end != '/') {
     end++;
   }
-  strncpy(host, start, end-start);
+  strncpy(host, start, end - start);
 
   // port is provided
   if (*end == ':') {
@@ -164,7 +165,7 @@ int separate_uri(char *uri, char *host, char *port, char *path) {
     // copy port
     while (*end != '/')
       end++;
-    strncpy(port, start, end-start);
+    strncpy(port, start, end - start);
   } else {
     // port is not provided, defualt 80
     strncpy(port, "80", 2);

@@ -7,12 +7,14 @@ SRCS = $(wildcard 12.*.c)
 PROGS = $(patsubst %.c,%,$(SRCS))
 PROGS_TEST = $(patsubst %.c,%.test,$(SRCS))
 
-all: $(PROGS) diff
+all: $(PROGS) diff 12.34_self_test.s format
 	(cd cgi-bin; make)
 	(cd 12.36; make)
 	(cd 12.38; make)
 	(cd 12.39; make)
 
+12.34_self_test.s: 12.34_self_test.c
+	$(CC) $(CFLAGS) -S $@ $< csapp.c -fverbose-asm -masm=intel
 %: %.c
 	$(CC) $(CFLAGS) -o $@ $< csapp.c
 
@@ -47,3 +49,8 @@ clean:
 
 benchmark:
 	wrk -d4 http://localhost:5000
+format:
+	(clang-format --style=Google -dump-config > ./.clang-format_google)
+	#(cat ./.clang-format >> ./.clang-format_google)
+	(sed -n -e '/.../r ./.clang-format_tmp' ./.clang-format_google > ./.clang-format)
+	(find . -name '*.c' | xargs clang-format --style=file -i )

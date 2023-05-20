@@ -2,6 +2,7 @@
  * 12.21.c
  */
 #include <stdio.h>
+
 #include "csapp.h"
 
 #define WRITE_LIMIT 100000
@@ -64,15 +65,14 @@ void init(void) {
   Sem_init(&mutex, 0, 1);
 }
 
-
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   int i;
   pthread_t tid;
 
   init();
 
   for (i = 0; i < PEOPLE; i++) {
-    if (i%2 == 0)
+    if (i % 2 == 0)
       Pthread_create(&tid, NULL, reader, NULL);
     else
       Pthread_create(&tid, NULL, writer, NULL);
@@ -81,4 +81,3 @@ int main(int argc, char* argv[]) {
   Pthread_exit(NULL);
   exit(0);
 }
-

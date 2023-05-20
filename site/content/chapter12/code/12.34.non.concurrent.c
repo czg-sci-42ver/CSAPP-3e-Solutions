@@ -2,8 +2,9 @@
  * 12.34.non.concurrent.c
  */
 #include <stdio.h>
-#include "csapp.h"
+
 #include "12.34.h"
+#include "csapp.h"
 
 int M1[N][M];
 int M2[N][M];
@@ -22,9 +23,7 @@ void non_concurrent_mul(void) {
     }
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   non_concurrent_mul();
   return 0;
 }
-
-

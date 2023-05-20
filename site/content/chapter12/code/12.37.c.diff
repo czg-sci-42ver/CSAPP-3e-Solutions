@@ -1,13 +1,12 @@
---- 12.tiny.c	2021-02-25 07:26:33.305926066 +0000
-+++ 12.37.c	2021-02-25 07:26:33.302592754 +0000
-@@ -13,9 +13,13 @@
- void clienterror(int fd, char *cause, char *errnum,
-     char *shortmsg, char *longmsg);
+--- 12.tiny.c	2023-05-20 18:22:16.321065849 +0800
++++ 12.37.c	2023-05-20 18:22:16.287731558 +0800
+@@ -13,8 +13,12 @@
+ void clienterror(int fd, char *cause, char *errnum, char *shortmsg,
+                  char *longmsg);
  
 +void *thread(void *vargp);
 +
- int main(int argc, char **argv)
- {
+ int main(int argc, char **argv) {
    int listenfd, connfd;
 +  int *connfdp;
 +  pthread_t tid;
@@ -15,20 +14,20 @@
    socklen_t clientlen;
    struct sockaddr_storage clientaddr;
 @@ -35,11 +39,23 @@
-     Getnameinfo((SA *) &clientaddr, clientlen, hostname, MAXLINE,
-         port, MAXLINE, 0);
+     Getnameinfo((SA *)&clientaddr, clientlen, hostname, MAXLINE, port, MAXLINE,
+                 0);
      printf("Accepted connection from (%s, %s)\n", hostname, port);
--    doit(connfd);                                             //line:netp:tiny:doit
--    Close(connfd);                                            //line:netp:tiny:close
+-    doit(connfd);  // line:netp:tiny:doit
+-    Close(connfd); // line:netp:tiny:close
 +
-+    connfdp = (int*)Malloc(sizeof(int));
++    connfdp = (int *)Malloc(sizeof(int));
 +    *connfdp = connfd;
 +    Pthread_create(&tid, NULL, thread, connfdp);
    }
  }
  
 +void *thread(void *vargp) {
-+  int connfd = *(int*)vargp;
++  int connfd = *(int *)vargp;
 +  Pthread_detach(Pthread_self());
 +  Free(vargp);
 +

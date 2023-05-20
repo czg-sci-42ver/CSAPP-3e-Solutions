@@ -2,6 +2,7 @@
  * 12.32.c
  */
 #include <stdio.h>
+
 #include "csapp.h"
 
 char *tfgets(char *s, int size, FILE *stream) {
@@ -14,21 +15,22 @@ char *tfgets(char *s, int size, FILE *stream) {
   timeout.tv_usec = 0;
 
   Select(1, &read_set, NULL, NULL, &timeout);
-  if (FD_ISSET(STDIN_FILENO, &read_set))
+  if (FD_ISSET(STDIN_FILENO, &read_set)) {
+    printf("get input in tfgets\n");
     return fgets(s, size, stream);
-  else
+  } else
     return NULL;
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
   char buf[MAXLINE];
 
   if (tfgets(buf, MAXLINE, stdin) == NULL)
     printf("BOOM!\n");
-  else
+  else {
+    printf("get input in main\n");
     printf("%s", buf);
+  }
 
   return 0;
 }
-
-
