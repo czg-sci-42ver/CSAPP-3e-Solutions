@@ -63,6 +63,7 @@ int main(int argc, char **argv) {
       continue;
     }
     sscanf(s_buf, "%s %s %s", method, uri, version);
+    printf("sbuf: %s\n",s_buf);
     // if uri is blocked?
     if (blocked_uri(uri, block_list)) {
       printf("%s is blocked\n", uri);
@@ -155,7 +156,7 @@ int separate_uri(char *uri, char *host, char *port, char *path) {
   while (*end != ':' && *end != '/') {
     end++;
   }
-  strncpy(host, start, end - start);
+  strncpy(host, start, end - start); /*like 'localhost' */
 
   // port is provided
   if (*end == ':') {
@@ -165,14 +166,14 @@ int separate_uri(char *uri, char *host, char *port, char *path) {
     // copy port
     while (*end != '/')
       end++;
-    strncpy(port, start, end - start);
+    strncpy(port, start, end - start); /*like '8000' */
   } else {
     // port is not provided, defualt 80
     strncpy(port, "80", 2);
   }
 
   // copy path
-  strcpy(path, end);
+  strcpy(path, end); /*maybe just '/' */
 }
 
 /*

@@ -1,0 +1,58 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "main",
+      "main.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/main.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "main",
+      "echoservers.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/echoservers.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "main",
+      "tiny.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/tiny.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/main"
+  },
+  {
+    "arguments": [
+      "/usr/bin/gcc",
+      "-c",
+      "-m64",
+      "-pthread",
+      "-o",
+      "main",
+      "../csapp.c"
+    ],
+    "directory": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36",
+    "file": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/csapp.c",
+    "output": "/mnt/ubuntu/home/czg/CSAPP-3e-Solutions/site/content/chapter12/code/12.36/main"
+  }
+]

@@ -2,11 +2,15 @@
 # makefile
 #
 CC = gcc
-CFLAGS = -m64 -pthread
+CFLAGS = -m64 -lpthread -g
+SRCS = $(shell ls | grep -e 'proxy[_a-zA-Z]*.c')
+PROGS = $(patsubst %.c,%,$(SRCS))
 
-all:
+all: $(PROGS)
 	$(CC) $(CFLAGS) proxy.c ../csapp.c -o proxy
 	$(CC) $(CFLAGS) proxy-thread.c ../csapp.c -o proxy-thread
+%: %.c
+	$(CC) $(CFLAGS) -o $@ $< ../csapp.c
 
 test:
 

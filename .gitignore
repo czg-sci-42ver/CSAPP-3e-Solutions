@@ -3,7 +3,8 @@
 !/**/
 !*.*
 # https://www.golinuxcloud.com/gitignore-examples/
-**.[0-9]?
+#**.[0-9]?
+**/[0-9].[0-9]?
 
 _book
 node_modules

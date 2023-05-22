@@ -1,0 +1,138 @@
+--- ../tiny_origin/tiny.c	2023-05-20 15:48:44.598211929 +0800
++++ tiny.c	2023-05-20 16:18:21.530802881 +0800
+@@ -1,49 +1,13 @@
+-/* $begin tinymain */
+ /*
+  * tiny.c - A simple, iterative HTTP/1.0 Web server that uses the
+  *     GET method to serve static and dynamic content.
+  */
+-#include "csapp.h"
+-
+-void doit(int fd);
+-void read_requesthdrs(rio_t *rp);
+-int parse_uri(char *uri, char *filename, char *cgiargs);
+-void serve_static(int fd, char *filename, int filesize);
+-void get_filetype(char *filename, char *filetype);
+-void serve_dynamic(int fd, char *filename, char *cgiargs);
+-void clienterror(int fd, char *cause, char *errnum, char *shortmsg,
+-                 char *longmsg);
+-
+-int main(int argc, char **argv) {
+-  int listenfd, connfd;
+-  char hostname[MAXLINE], port[MAXLINE];
+-  socklen_t clientlen;
+-  struct sockaddr_storage clientaddr;
+-
+-  /* Check command line args */
+-  if (argc != 2) {
+-    fprintf(stderr, "usage: %s <port>\n", argv[0]);
+-    exit(1);
+-  }
+-
+-  listenfd = Open_listenfd(argv[1]);
+-  clientlen = sizeof(clientaddr);
+-  while (1) {
+-    connfd = Accept(listenfd, (SA *)&clientaddr,
+-                    &clientlen);  // line:netp:tiny:accept
+-    Getnameinfo((SA *)&clientaddr, clientlen, hostname, MAXLINE, port, MAXLINE,
+-                0);
+-    printf("Accepted connection from (%s, %s)\n", hostname, port);
+-    doit(connfd);   // line:netp:tiny:doit
+-    Close(connfd);  // line:netp:tiny:close
+-  }
+-}
+-/* $end tinymain */
++#include "../csapp.h"
++#include "tiny.h"
+ 
+ /*
+  * doit - handle one HTTP request/response transaction
+  */
+-/* $begin doit */
+ void doit(int fd) {
+   int is_static;
+   struct stat sbuf;
+@@ -90,12 +54,10 @@
+     serve_dynamic(fd, filename, cgiargs);  // line:netp:doit:servedynamic
+   }
+ }
+-/* $end doit */
+ 
+ /*
+  * read_requesthdrs - read HTTP request headers
+  */
+-/* $begin read_requesthdrs */
+ void read_requesthdrs(rio_t *rp) {
+   char buf[MAXLINE];
+ 
+@@ -107,13 +69,11 @@
+   }
+   return;
+ }
+-/* $end read_requesthdrs */
+ 
+ /*
+  * parse_uri - parse URI into filename and CGI args
+  *             return 0 if dynamic content, 1 if static
+  */
+-/* $begin parse_uri */
+ int parse_uri(char *uri, char *filename, char *cgiargs) {
+   char *ptr;
+ 
+@@ -137,17 +97,14 @@
+     return 0;
+   }
+ }
+-/* $end parse_uri */
+ 
+ /*
+  * serve_static - copy a file back to the client
+  */
+-/* $begin serve_static */
+ void serve_static(int fd, char *filename, int filesize) {
+   int srcfd;
+   char *srcp, filetype[MAXLINE], buf[MAXBUF];
+ 
+-  /* Send response headers to client */
+   get_filetype(filename, filetype);     // line:netp:servestatic:getfiletype
+   sprintf(buf, "HTTP/1.0 200 OK\r\n");  // line:netp:servestatic:beginserve
+   sprintf(buf, "%sServer: Tiny Web Server\r\n", buf);
+@@ -158,7 +115,6 @@
+   printf("Response headers:\n");
+   printf("%s", buf);
+ 
+-  /* Send response body to client */
+   srcfd = Open(filename, O_RDONLY, 0);  // line:netp:servestatic:open
+   srcp = Mmap(0, filesize, PROT_READ, MAP_PRIVATE, srcfd,
+               0);                  // line:netp:servestatic:mmap
+@@ -182,12 +138,10 @@
+   else
+     strcpy(filetype, "text/plain");
+ }
+-/* $end serve_static */
+ 
+ /*
+  * serve_dynamic - run a CGI program on behalf of the client
+  */
+-/* $begin serve_dynamic */
+ void serve_dynamic(int fd, char *filename, char *cgiargs) {
+   char buf[MAXLINE], *emptylist[] = {NULL};
+ 
+@@ -208,12 +162,10 @@
+   Wait(NULL);
+   /* Parent waits for and reaps child */  // line:netp:servedynamic:wait
+ }
+-/* $end serve_dynamic */
+ 
+ /*
+  * clienterror - returns an error message to the client
+  */
+-/* $begin clienterror */
+ void clienterror(int fd, char *cause, char *errnum, char *shortmsg,
+                  char *longmsg) {
+   char buf[MAXLINE], body[MAXBUF];
+@@ -238,4 +190,3 @@
+   Rio_writen(fd, buf, strlen(buf));
+   Rio_writen(fd, body, strlen(body));
+ }
+-/* $end clienterror */

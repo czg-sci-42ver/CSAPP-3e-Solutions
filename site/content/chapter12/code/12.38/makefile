@@ -2,7 +2,7 @@
 # makefile
 #
 CC = gcc
-CFLAGS = -m64 -pthread
+CFLAGS = -m64 -lpthread -O2 -Wall
 
 all:
 	$(CC) $(CFLAGS) main.c sbuf.c tiny.c ../csapp.c -o main

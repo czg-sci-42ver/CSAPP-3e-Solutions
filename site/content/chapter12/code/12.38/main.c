@@ -80,15 +80,16 @@ void init(void) {
 }
 
 void *serve_thread(void *vargp) {
+  Pthread_detach(pthread_self());
   int idx = *(int *)vargp;
   Free(vargp);
 
   while (1) {
     // get lock first
     // thread can't be kill now
-    P(&(threads[idx].mutex));
 
     int connfd = sbuf_remove(&sbuf);
+    P(&(threads[idx].mutex));
     doit(connfd);
     Close(connfd);
 
@@ -129,10 +130,10 @@ void *adjust_threads(void *vargp) {
       if (cur_max_thread < nthreads) {
         cur_max_thread = nthreads;
       }
-      if (cur_max_thread >= 32) {
-        printf("too many threads");
-        exit(0);
-      }
+      // if (cur_max_thread >= 32) {
+      //   printf("too many threads");
+      //   exit(0);
+      // }
       continue;
     }
 
@@ -152,6 +153,7 @@ void *adjust_threads(void *vargp) {
        * if you want to kill a thread, you must get the lock before it so you
        * won't kill a thread which is offering service.
        */
+      printf("decrease thread num from %d\n",nthreads);
       int i;
       for (i = hn; i < nthreads; i++) {
         P(&(threads[i].mutex));
@@ -159,6 +161,7 @@ void *adjust_threads(void *vargp) {
         V(&(threads[i].mutex));
       }
       nthreads = hn;
+      printf("decrease thread num to %d\n",nthreads);
       continue;
     }
   }
