@@ -40,8 +40,12 @@ void *reader(void *vargp) {
 
 void *writer(void *vargp) {
   while (1) {
-    if (readcnt != 0)
+    P(&mutex);
+    if (readcnt != 0) {
+      V(&mutex);
       continue;
+    }
+    V(&mutex);
 
     P(&w);
 
