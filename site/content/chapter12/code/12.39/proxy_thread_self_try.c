@@ -59,7 +59,7 @@ int main(int argc, char **argv) {
     P(&unused_thread_mutex);
     for (i = 0; i < THREADS; i++) {
       if (used_threads[i] == 0) {
-        used_threads[i]=1;
+        used_threads[i] = 1;
         use_thread = i;
         break;
       }
@@ -73,8 +73,8 @@ int main(int argc, char **argv) {
     threads_arg[use_thread] = (struct thread_arg){
         .thread_index = use_thread,
         .block_list = (char **)block_list,
-        .connfd=connfd,
-        .logfd=logfd,
+        .connfd = connfd,
+        .logfd = logfd,
     };
     Sem_init(&threads_arg[use_thread].mutex, 0, 1);
 
@@ -161,7 +161,7 @@ void *loop_thread(void *argp) {
   Close(arg.connfd);
   Close(clientfd);
   P(&unused_thread_mutex);
-  used_threads[arg.thread_index]=0;
+  used_threads[arg.thread_index] = 0;
   V(&unused_thread_mutex);
 }
 

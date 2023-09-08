@@ -653,9 +653,34 @@ void P(sem_t *sem) {
     unix_error("P error");
 }
 
+/*
+
+*/
+void P_count(sem_t *sem, long int *cnt) {
+  if (sem_wait(sem) < 0)
+    unix_error("P error");
+#ifdef P_COUNT_DEBUG
+  printf("before adding, P cnt:%ld\n", *cnt);
+#endif
+  (*cnt)++;
+#ifdef P_COUNT_DEBUG
+  printf("P cnt:%ld\n", *cnt);
+#endif
+  fflush(stdout);
+}
+
 void V(sem_t *sem) {
   if (sem_post(sem) < 0)
     unix_error("V error");
+}
+
+void V_count(sem_t *sem, long int *cnt) {
+  if (sem_post(sem) < 0)
+    unix_error("V error");
+  (*cnt)++;
+#ifdef P_COUNT_DEBUG
+  printf("V cnt:%ld\n", *cnt);
+#endif
 }
 
 /****************************************

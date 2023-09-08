@@ -170,7 +170,9 @@ void Pthread_once(pthread_once_t *once_control, void (*init_function)());
 /* POSIX semaphore wrappers */
 void Sem_init(sem_t *sem, int pshared, unsigned int value);
 void P(sem_t *sem);
+void P_count(sem_t *sem,long int* cnt);
 void V(sem_t *sem);
+void V_count(sem_t *sem,long int* cnt);
 
 /* Rio (Robust I/O) package */
 ssize_t rio_readn(int fd, void *usrbuf, size_t n);

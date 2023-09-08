@@ -63,7 +63,7 @@ int main(int argc, char **argv) {
       continue;
     }
     sscanf(s_buf, "%s %s %s", method, uri, version);
-    printf("sbuf: %s\n",s_buf);
+    printf("sbuf: %s\n", s_buf);
     // if uri is blocked?
     if (blocked_uri(uri, block_list)) {
       printf("%s is blocked\n", uri);
