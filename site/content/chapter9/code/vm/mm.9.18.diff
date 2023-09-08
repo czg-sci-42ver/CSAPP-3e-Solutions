@@ -1,5 +1,5 @@
 --- mm.c	2023-02-26 11:04:36.463614083 +0800
-+++ mm.9.18.c	2023-02-26 11:04:36.463614083 +0800
++++ mm.9.18.c	2023-05-10 15:59:06.912389624 +0800
 @@ -20,7 +20,7 @@
  #define MAX(x, y) ((x) > (y)? (x) : (y))
  
@@ -30,7 +30,7 @@
    heap_listp += (2*WSIZE);                     //line:vm:mm:endinit
    /* $end mminit */
  
-@@ -98,10 +99,10 @@
+@@ -98,10 +99,11 @@
      return NULL;
  
    /* Adjust block size to include overhead and alignment reqs. */
@@ -40,11 +40,12 @@
 +    asize = DSIZE;
    else
 -    asize = DSIZE * ((size + (DSIZE) + (DSIZE-1)) / DSIZE); //line:vm:mm:sizeadjust3
++  /* here if-else may can be omitted ‘size <= WSIZE’ the following can emit the above answer. */
 +    asize = DSIZE * ((size + (WSIZE) + (DSIZE-1)) / DSIZE); //line:vm:mm:sizeadjust3
  
    /* Search the free list for a fit */
    if ((bp = find_fit(asize)) != NULL) {  //line:vm:mm:findfitcall
-@@ -136,8 +137,16 @@
+@@ -136,8 +138,16 @@
    }
    /* $begin mmfree */
  
@@ -63,7 +64,7 @@
    coalesce(bp);
  }
  
-@@ -148,7 +157,7 @@
+@@ -148,7 +158,7 @@
  /* $begin mmfree */
  static void *coalesce(void *bp)
  {
@@ -72,7 +73,7 @@
    size_t next_alloc = GET_ALLOC(HDRP(NEXT_BLKP(bp)));
    size_t size = GET_SIZE(HDRP(bp));
  
-@@ -158,22 +167,22 @@
+@@ -158,22 +168,23 @@
  
    else if (prev_alloc && !next_alloc) {      /* Case 2 */
      size += GET_SIZE(HDRP(NEXT_BLKP(bp)));
@@ -86,6 +87,7 @@
      size += GET_SIZE(HDRP(PREV_BLKP(bp)));
 -    PUT(FTRP(bp), PACK(size, 0));
 -    PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0));
++    /*in free block, no need to check 'prev_alloc' of temporally former free block because always coalescing after freeing one block, so 'prev_alloc' of temporally former free block must be 1 */
 +    PUT(FTRP(bp), PACK(size, 0, 1));
 +    PUT(HDRP(PREV_BLKP(bp)), PACK(size, 0, 1));
      bp = PREV_BLKP(bp);
@@ -101,7 +103,7 @@
      bp = PREV_BLKP(bp);
    }
    /* $end mmfree */
-@@ -246,9 +255,9 @@
+@@ -246,9 +257,9 @@
      return NULL;                                        //line:vm:mm:endextend
  
    /* Initialize free block header/footer and the epilogue header */
@@ -114,7 +116,7 @@
  
    /* Coalesce if the previous block was free */
    return coalesce(bp);                                          //line:vm:mm:returnblock
-@@ -267,15 +276,14 @@
+@@ -267,15 +278,14 @@
    size_t csize = GET_SIZE(HDRP(bp));
  
    if ((csize - asize) >= (2*DSIZE)) {

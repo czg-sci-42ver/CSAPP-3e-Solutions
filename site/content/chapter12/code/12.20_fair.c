@@ -20,7 +20,8 @@ while the other P(mutex),P(reader_first_lock),V(reader_first_lock),V(mutex)
 #define NOT_DEBUG_ORDER
 
 /*
-Also see https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter12/12.20/#comment-6273427059
+Also see
+https://dreamanddead.github.io/CSAPP-3e-Solutions/chapter12/12.20/#comment-6273427059
 for how COMPLEX_SECTION influences the result.
 */
 #define COMPLEX_SECTION
