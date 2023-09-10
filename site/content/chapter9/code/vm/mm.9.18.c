@@ -20,6 +20,9 @@
 #define MAX(x, y) ((x) > (y)? (x) : (y))
 
 /* Pack a size and allocated bit into a word */
+/*
+size at least DSIZE(i.e. 8), so can be packed.
+*/
 #define PACK(size, alloc, prev_alloc)  ((size) | (alloc) | (prev_alloc << 1)) //line:vm:mm:pack
 
 /* Read and write a word at address p */
@@ -133,6 +136,9 @@ void mm_free(void *bp)
   /* $begin mmfree */
   size_t size = GET_SIZE(HDRP(bp));
   /* $end mmfree */
+  /*
+  TODO why when bp!=0, heap_listp can be 0 
+  */
   if (heap_listp == 0){
     mm_init();
   }
@@ -272,11 +278,17 @@ static void *extend_heap(size_t words)
  */
 /* $begin mmplace */
 /* $begin mmplace-proto */
+/*
+implies bp free from the context (bp = find_fit(asize)) != NULL
+*/
 static void place(void *bp, size_t asize)
   /* $end mmplace-proto */
 {
   size_t csize = GET_SIZE(HDRP(bp));
 
+  /*
+  Here place two pairs of headers, one for alloc asize one for free "csize-asize", so (2*DSIZE)
+  */
   if ((csize - asize) >= (2*DSIZE)) {
     PUT(HDRP(bp), PACK(asize, 1, 1));
     bp = NEXT_BLKP(bp);
@@ -295,6 +307,9 @@ static void place(void *bp, size_t asize)
  */
 /* $begin mmfirstfit */
 /* $begin mmfirstfit-proto */
+/*
+find the free entire block which can fit asize in
+*/
 static void *find_fit(size_t asize)
   /* $end mmfirstfit-proto */
 {

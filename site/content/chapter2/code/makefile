@@ -2,7 +2,7 @@
 # makefile
 #
 CC = gcc
-CFLAGS = -m64 -std=c99
+CFLAGS = -m64 -std=c99 -g
 SRCS = $(wildcard *.c)
 PROGS = $(patsubst %.c,%,$(SRCS))
 PROGS_TEST = $(patsubst %.c,%.test,$(SRCS))

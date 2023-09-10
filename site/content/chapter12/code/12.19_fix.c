@@ -5,7 +5,7 @@
 
 #include "csapp.h"
 
-#define WRITE_LIMIT 100000
+#define WRITE_LIMIT 10
 #define PEOPLE 4
 
 static int readtimes;

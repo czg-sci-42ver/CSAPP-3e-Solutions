@@ -30,6 +30,7 @@ int main(int argc, char* argv[]) {
   assert(A(8) == 0xFFFFFF00);
   // assert(A_2(8) == 0xFFFFFF00);
   assert(A(32) == 0x0);
+  printf("%d\n",-1<<32);
   assert(A(0) == 0xFFFFFFff);
   assert(A_2(0) == 0xFFFFFFff);
   // assert(A_2(32) == 0x0);
