@@ -35,6 +35,7 @@ void doit(int fd) {
     return;
   } // line:netp:doit:endnotfound
 
+  printf("%s\n",filename);
   if (is_static) { /* Serve static content */
     if (!(S_ISREG(sbuf.st_mode)) ||
         !(S_IRUSR & sbuf.st_mode)) { // line:netp:doit:readable

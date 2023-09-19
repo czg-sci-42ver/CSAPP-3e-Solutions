@@ -58,6 +58,7 @@ void check_clients(pool *p) {
     if ((connfd > 0) && (FD_ISSET(connfd, &p->ready_set))) {
       p->nready--;
 
+      printf("connfd: %d\n",connfd);
       doit(connfd);
       Close(connfd);
       FD_CLR(connfd, &p->read_set); // line:conc:echoservers:beginremove
