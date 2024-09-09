@@ -48,7 +48,7 @@ void *writer(void *vargp) {
 
     P(&w);
     printf("writer begin Critical section\n");
-    exit(0);
+    // exit(0);
     /* Critical section */
     writetimes++;
     if (writetimes == WRITE_LIMIT) {
@@ -60,9 +60,13 @@ void *writer(void *vargp) {
     // if a reader is waiting, reader first next round
     /*
     here bacause reader above 1 will hold mutex `w` when readcnt == 1 until
-    readcnt decreases to 0 so reader above 1 implies that writer blocks when
+    readcnt decreases to 0 ("above 1" is why the original code prefers reader)
+    so reader above 1 implies that writer blocks when
     `P(&w)` and vice versa (i.e. writer running implies that the first reader
     blocks when `P(&w)` until writer release `w` mutex).
+
+    But "until writer release `w` mutex" may not occur as the exercise says
+    "will always restart a waiting reader if one exists".
     */
     if (readcnt == 1)
       reader_first = 1;

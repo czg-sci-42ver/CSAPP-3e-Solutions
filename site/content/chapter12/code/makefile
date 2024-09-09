@@ -2,7 +2,8 @@
 # makefile
 #
 CC = gcc
-CFLAGS = -m64 -pthread -g
+# https://stackoverflow.com/a/56613606/21294350. See more_simple_compile.sh: CFLAGS="-g3 -O0 -ggdb3" make 12.21_fix --always-make
+CFLAGS += -m64 -pthread
 SRCS = $(wildcard 12.*.c)
 PROGS = $(patsubst %.c,%,$(SRCS))
 PROGS_TEST = $(patsubst %.c,%.test,$(SRCS))
@@ -52,5 +53,8 @@ benchmark:
 format:
 	(clang-format --style=Google -dump-config > ./.clang-format_google)
 	#(cat ./.clang-format >> ./.clang-format_google)
-	(sed -n -e '/.../r ./.clang-format_tmp' ./.clang-format_google > ./.clang-format)
+	# tested on sed (GNU sed) 4.9. In old sed, . seems to be not regex.
+	(sed -n -e '/\.\.\./{r ./.clang-format_tmp' -e 'd' -e '}' ./.clang-format_google > ./.clang-format)
+	# (sed -e '/SortIncludes/{r ./.clang-format_tmp' -e 'd' -e '}' ./.clang-format_google > ./.clang-format)
+	# clang-format version 18.1.8
 	(find . -name '*.c' | xargs clang-format --style=file -i )

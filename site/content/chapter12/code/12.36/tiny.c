@@ -24,7 +24,7 @@ void doit(int fd) {
     clienterror(fd, method, "501", "Not Implemented",
                 "Tiny does not implement this method");
     return;
-  }                       // line:netp:doit:endrequesterr
+  } // line:netp:doit:endrequesterr
   read_requesthdrs(&rio); // line:netp:doit:readrequesthdrs
 
   /* Parse URI from GET request */
@@ -35,7 +35,7 @@ void doit(int fd) {
     return;
   } // line:netp:doit:endnotfound
 
-  printf("%s\n",filename);
+  printf("%s\n", filename);
   if (is_static) { /* Serve static content */
     if (!(S_ISREG(sbuf.st_mode)) ||
         !(S_IRUSR & sbuf.st_mode)) { // line:netp:doit:readable

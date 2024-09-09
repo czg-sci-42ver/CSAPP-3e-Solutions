@@ -19,10 +19,10 @@ helpFunction() {
   echo ""
   echo "Usage: $0 -p chapter file (-g| -gg num) -l link_lib "
   echo -e "\tThe argument order can't be changed"
-  echo -e "\tDescription of what chapter is"
-  echo -e "\tDescription of what file name is"
-  echo -e "\t-g whether debug"
-  echo -e "\tnum breakpoint line number"
+  echo -e "\tchapter: Description of what chapter is"
+  echo -e "\tfile: Description of what file name is"
+  echo -e "\t-g: whether debug"
+  echo -e "\tnum: breakpoint line number"
   #   exit 0 # Exit script after printing help
 }
 

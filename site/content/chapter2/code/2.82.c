@@ -87,7 +87,7 @@ int main(int argc, char* argv[]) {
   int x = random_int();
   int y = random_int();
 
-  // assert(!A(INT_MIN, 0));
+  assert(!A(INT_MIN, 0));
   assert(B(x, y));
   assert(B(INT_MAX,1));
   assert(C(x, y));

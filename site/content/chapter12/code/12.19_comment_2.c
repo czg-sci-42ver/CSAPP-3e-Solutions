@@ -43,14 +43,14 @@ void *reader(void *vargp) {
 
 void *writer(void *vargp) {
   while (1) {
-    // P(&mutex);
-    if (readcnt == 1)
+    P(&mutex);
+    if (readcnt == 1) { // this may cause writer starvation.
+      V(&mutex);
       continue;
-    // V(&mutex);
+    }
 
     P(&w);
     printf("writer begin Critical section\n");
-    exit(0);
     /* Critical section */
     writetimes++;
     if (writetimes == WRITE_LIMIT) {

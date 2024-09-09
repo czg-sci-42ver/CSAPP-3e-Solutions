@@ -68,7 +68,7 @@ void doit(int fd) {
     clienterror(fd, method, "501", "Not Implemented",
                 "Tiny does not implement this method");
     return;
-  }                       // line:netp:doit:endrequesterr
+  } // line:netp:doit:endrequesterr
   read_requesthdrs(&rio); // line:netp:doit:readrequesthdrs
 
   /* Parse URI from GET request */
